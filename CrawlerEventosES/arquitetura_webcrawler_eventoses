@@ -1,0 +1,34 @@
+digraph "Arquitetura WebCrawler EventosES" {
+	graph [fontcolor="#2D3436" fontname="Sans-Serif" fontsize=15 label="Arquitetura WebCrawler EventosES" nodesep=0.60 pad=2.0 rankdir=LR ranksep=0.75 splines=ortho]
+	node [fixedsize=true fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13 height=1.4 imagescale=true labelloc=b shape=box style=rounded width=1.4]
+	edge [color="#7B8894"]
+	a89215a591ae4dccb9fcb4420c7360b5 [label=Actor height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/general\user.png" shape=none]
+	"4994a974b7cc403696b3a6758879365f" [label="API Gateway" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/network\api-gateway.png" shape=none]
+	a89215a591ae4dccb9fcb4420c7360b5 -> "4994a974b7cc403696b3a6758879365f" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"4994a974b7cc403696b3a6758879365f" -> "870f90b0695b4727b15c50fdf1a47542" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"4994a974b7cc403696b3a6758879365f" -> "0452af5f4dec485bb3c40870964203c2" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph "cluster_Crawler Services" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Crawler Services" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"870f90b0695b4727b15c50fdf1a47542" [label="Lebillet Crawler" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/compute\lambda.png" shape=none]
+		"0452af5f4dec485bb3c40870964203c2" [label="Agazeta Crawler" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/compute\lambda.png" shape=none]
+	}
+	"768672b183c1467cbe2fcd049704f301" [label="Fila de Evento" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/integration\simple-queue-service-sqs.png" shape=none]
+	"870f90b0695b4727b15c50fdf1a47542" -> "768672b183c1467cbe2fcd049704f301" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"0452af5f4dec485bb3c40870964203c2" -> "768672b183c1467cbe2fcd049704f301" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"768672b183c1467cbe2fcd049704f301" -> "71222249634047c291f1076cf7f21771" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	"71222249634047c291f1076cf7f21771" -> "074567c50fac4669ae15e815b93c07f0" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph cluster_Processamento {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label=Processamento labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		"71222249634047c291f1076cf7f21771" [label="Processador de Dados" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/compute\lambda.png" shape=none]
+		"074567c50fac4669ae15e815b93c07f0" [label="Armazenamento Dados Brutos" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/storage\simple-storage-service-s3.png" shape=none]
+	}
+	"9cda3fe74d5140e3a0e4026d812a3f78" [label="Banco de Dados" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/database\rds.png" shape=none]
+	"71222249634047c291f1076cf7f21771" -> "9cda3fe74d5140e3a0e4026d812a3f78" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	subgraph "cluster_Monitoramento e Notificações" {
+		graph [bgcolor="#E5F5FD" fontname="Sans-Serif" fontsize=12 label="Monitoramento e Notificações" labeljust=l pencolor="#AEB6BE" rankdir=LR shape=box style=rounded]
+		bff735406792431f80f429bd84fbf23b [label=Monitoramento height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/management\cloudwatch.png" shape=none]
+		"7c77dda02c624a77b79a4cf2485c77c3" [label="Serviço de Notificações" height=1.9 image="C:\Users\Matheus\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\resources/aws/general\client.png" shape=none]
+	}
+	"71222249634047c291f1076cf7f21771" -> bff735406792431f80f429bd84fbf23b [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+	bff735406792431f80f429bd84fbf23b -> "7c77dda02c624a77b79a4cf2485c77c3" [dir=forward fontcolor="#2D3436" fontname="Sans-Serif" fontsize=13]
+}
